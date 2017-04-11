@@ -1,8 +1,11 @@
+package root;
 /**
  * Created by secret on 11.04.2017.
  */
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
+
+
 
 public class StartWebApp {
     public static void main(String[] args) throws Exception {
@@ -12,12 +15,9 @@ public class StartWebApp {
         WebAppContext webapp = new WebAppContext();
         webapp.setContextPath("/");
         // change the name of the war as needed.
-        webapp.setWar("target/classes/testHero.war");
+        webapp.setWar("target/classes/testHero2.war");
         server.setHandler(webapp);
-
         server.start();
         server.join();
     }
-
-
 }
