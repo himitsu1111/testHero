@@ -1,1 +1,1 @@
-web:    java -cp target/classes/MyServlet
+web:    java -cp target/classes:target/dependency/* MyServlet

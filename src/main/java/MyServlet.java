@@ -1,3 +1,8 @@
+
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,5 +34,14 @@ public class MyServlet extends HttpServlet {
 
     }
 
+    public static void main(String[] args) throws Exception{
+        Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+        context.addServlet(new ServletHolder(new MyServlet()),"/*");
+        server.start();
+        server.join();
+    }
 
 }
